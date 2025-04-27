@@ -13,6 +13,7 @@ public class StudentManagement {
 			System.out.println("3. Delete name");
 			System.out.println("4. Change name");
 			System.out.println("5. Exit");
+			try {
 			int choice = sc.nextInt();
 			String name = "";
 			sc.nextLine();
@@ -21,30 +22,38 @@ public class StudentManagement {
 				name = sc.nextLine();
 				students.add(name);
 			} else if (choice == 2) {
-				System.out.println("List of students "+students);
+				System.out.println("List of students " + students);
 
-			}
-			else if(choice == 3) {
+			} else if (choice == 3) {
 				System.out.println("Enter name to delete:");
 				name = sc.nextLine();
-				if(students.contains(name)) {
-				students.remove(name);System.out.println("Removed "+name);}
-				else {
-					System.out.println(name+" not found");
+				if (students.contains(name)) {
+					students.remove(name);
+					System.out.println("Removed " + name);
+				} else {
+					System.out.println(name + " not found");
 				}
-			}
-			else if(choice ==4) {
+			} else if (choice == 4) {
 				System.out.println("Enter the name to be changed");
 				name = sc.nextLine();
+				if(students.contains(name)) {
 				System.out.println("Enter the changed name");
 				String newName = sc.nextLine();
 				int i = students.indexOf(name);
-				students.set(i,newName);
-				System.out.println("Name successfuly changed from "+name+" to "+students.get(i));
-			}
-			else {
+				students.set(i, newName);
+				System.out.println("Name successfuly changed from " + name + " to " + students.get(i));}
+				else {
+					System.out.println(name + " not found");
+				}
+			} else {
 				System.out.println("Exiting");
 				break;
+			}
+			}
+			catch(Exception e) {
+				System.out.println("Enter only number");
+				sc.next();
+				
 			}
 		}
 		sc.close();
