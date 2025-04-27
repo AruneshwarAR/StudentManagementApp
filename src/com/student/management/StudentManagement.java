@@ -27,7 +27,11 @@ public class StudentManagement {
 			else if(choice == 3) {
 				System.out.println("Enter name to delete:");
 				name = sc.nextLine();
-				students.remove(students.indexOf(name));
+				if(students.contains(name)) {
+				students.remove(name);System.out.println("Removed "+name);}
+				else {
+					System.out.println(name+" not found");
+				}
 			}
 			else if(choice ==4) {
 				System.out.println("Enter the name to be changed");
